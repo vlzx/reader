@@ -5,18 +5,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "postinstall": "patch-package"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@types/crypto-js": "^4.1.1",
-    "@types/kuromoji": "^0.1.1",
     "axios": "^0.27.2",
-    "crypto-js": "^4.1.1",
-    "kuromoji": "^0.1.2",
-    "patch-package": "^6.4.7",
-    "path-browserify": "^1.0.1",
-    "postinstall-postinstall": "^2.1.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {

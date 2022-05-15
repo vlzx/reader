@@ -1,27 +1,35 @@
 <script setup lang="ts">
-import {onMounted} from "vue";
-import translate from "../composables/youdao-translate";
-import tokenize from "../composables/kuromoji";
+import {onMounted, reactive, ref} from "vue";
+import translate from "../composables/translator";
+import tokenize, {Token} from "../composables/tokenizer";
+
+const translation = ref('translation here')
+const tokens = ref([] as Token[])
 
 onMounted(() => {
-  const data = translate('寿司を食べたい')
-  data.then(data => {
-    if (data['errorCode'] == '0') {
-      console.log(data['translation']);
-    } else {
-      console.log(data)
-      // warning message
-    }
-  })
-  setTimeout(() => {
-    const tokens = tokenize('今日は')
-    console.log(tokens)
-  }, 1000)
+  // translate('寿司を食べたい')
+  //     .then(data => {
+  //       translation.value = data
+  //     })
+  //     .catch(err => console.error(err))
+
+  tokenize('今日は寿司を食べたい')
+      .then(data => {
+        for (const elem of data) {
+          tokens.value.push(elem)
+        }
+      })
+      .catch(err => console.error(err))
 })
 </script>
 
 <template>
-  <div>Reader Page</div>
+  <div>
+    <div>Reader Page</div>
+    <div>{{ translation }}</div>
+    <div>{{ tokens }}</div>
+  </div>
+
 </template>
 
 <style scoped>
