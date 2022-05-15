@@ -43,8 +43,10 @@ def reading2furigana(word: str, reading: str):
         tokens.append({'word': word, 'furigana': reading_hira})
     elif word in [reading_hira, reading] or reading == '*':
         tokens.append({'word': word, 'furigana': ''})
-    else:
+    elif any([is_kanji(ch) for ch in word]):
         tokens.extend(okurigana2furigana(word, reading_hira))
+    else:
+        tokens.extend({'word': word, 'furigana': ''})
 
     return tokens
 

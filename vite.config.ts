@@ -12,10 +12,5 @@ export default defineConfig({
         changeOrigin: true
       }
     }
-  },
-  resolve: {
-    alias: {
-      path: 'path-browserify'
-    }
   }
 })

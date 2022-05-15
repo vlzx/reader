@@ -5,7 +5,7 @@ export default function translate(text: string) {
         axios.post('/api/v1/translate', {'text': text})
             .then(resp => {
                 if (resp.data && resp.data['code'] == '0') {
-                    resolve(resp.data['translation'][0])
+                    resolve(resp.data['translation'].join(''))
                 } else {
                     reject({'code': resp.data['code']})
                 }
