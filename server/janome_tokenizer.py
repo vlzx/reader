@@ -2,9 +2,9 @@ import unicodedata
 from typing import List, Dict
 
 import jaconv
-from janome.tokenizer import Tokenizer
-
-tokenizer = Tokenizer()
+# from janome.tokenizer import Tokenizer
+#
+# tokenizer = Tokenizer()
 
 
 def is_kanji(char: str):
@@ -17,14 +17,14 @@ def is_hiragana(char: str):
 
 def tokenize(text: str):
     tokens = []
-    for token in tokenizer.tokenize(text):
-        # 表層形\t品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用型,活用形,原形,読み,発音
-        keys = ['surface_form', 'pos', 'pos_detail_1', 'pos_detail_2', 'pos_detail_3',
-                'conjugated_type', 'conjugated_form', 'basic_form',
-                'reading', 'pronunciation']
-        values = str(token).split('\t')
-        values = [values[0], *values[1].split(',')]
-        tokens.append(dict(zip(keys, values)))
+    # for token in tokenizer.tokenize(text):
+    #     # 表層形\t品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用型,活用形,原形,読み,発音
+    #     keys = ['surface_form', 'pos', 'pos_detail_1', 'pos_detail_2', 'pos_detail_3',
+    #             'conjugated_type', 'conjugated_form', 'basic_form',
+    #             'reading', 'pronunciation']
+    #     values = str(token).split('\t')
+    #     values = [values[0], *values[1].split(',')]
+    #     tokens.append(dict(zip(keys, values)))
     return tokens
 
 

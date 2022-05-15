@@ -2,5 +2,5 @@ fastapi
 pydantic
 uvicorn
 httpx
-janome
+
 jaconv
