@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from server.youdao_translator import translate
 from server.janome_tokenizer import text2furigana
 
-app = FastAPI()
+app = FastAPI(root_path='/reader')
 if pathlib.Path('dist').exists():
     app.mount('/dist', StaticFiles(directory='dist'), name='dist')
 
@@ -37,6 +37,6 @@ def tokenize_api(req: Text):
     return text2furigana(req.text)
 
 
-@app.get('/{path:path}')
+@app.get('/reader/{path:path}')
 def index():
     return FileResponse('dist/index.html', media_type='text/html')
